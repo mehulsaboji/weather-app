@@ -9,5 +9,5 @@ Currently, two official plugins are available:
 
 The dependencies needed to be installed in order to run this on your machine:
 
-1. create-vite5.5.2 and select the framework react and the variant Javascript
+1. Run the command npm @create-vite5.5.2 in your vscode terminal and select the framework react and the variant Javascript
 2. Run npm install and npm run dev
