@@ -35,14 +35,14 @@ const Weather = () => {
             return;
         }
         try {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
             const response = await fetch(url);
             const data = await response.json();
 
-            //if(!response.ok) {
-            //    alert(data.message);
-             //   return;
-            //}
+            if(!response.ok) {
+                alert(data.message);
+                return;
+            }
             console.log(data);
             const icon = allIcons[data.weather[0].icon] || clear_icon;
             setWeatherData({
@@ -68,7 +68,7 @@ const Weather = () => {
             <input ref={inputRef} type="text" placeholder='Search'/>
             <img src={search_icon} alt="" onClick={()=>search(inputRef.current.value)} />
         </div>
-        
+        {weatherData?<>
         <img src={weatherData.icon} alt="" className="weather-icon" />
         <p className='temperature'>{weatherData.temperature} °C</p>
         <p className='location'>{weatherData.location}</p>
@@ -88,7 +88,7 @@ const Weather = () => {
                 </div>
             </div>
         </div>
-        
+        </>:<></>}
 
         
 
